@@ -1,0 +1,15 @@
+Package: DeepLearningML
+Title: Deep Learning and Machine Learning Modeling in Bioinformatics
+Version: 0.0.0.9000
+Authors@R: 
+    person("Dany", "Mukesha", , 
+        "danymukesha@gmail.com", role = c("aut", "cre"),
+        comment = c(ORCID = "0009-0001-9514-751X"))
+Description: Implements deep learning and machine learning algorithms 
+    for metabolomics and bioinformatics data analysis using h2o and caret.
+License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
+    license
+Encoding: UTF-8
+Depends: R (>= 4.0.0), h2o, caret, pROC
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
