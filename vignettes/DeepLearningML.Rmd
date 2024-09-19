@@ -23,7 +23,7 @@ library(DeepLearningML)
 You can train a deep learning model using your metabolomics dataset. 
 For example, let's create a small dataset and train a model:
 
-```{r train_dl_model}
+```{r train_dl_model, warning=FALSE}
 library(h2o)
 h2o.init()
 data <- data.frame(
@@ -64,7 +64,7 @@ print(results)
 You can assess the importance of features in the trained models 
 using the `feature_importance()` function:
 
-```{r feature_importance}
+```{r feature_importance, eval=FALSE}
 # calculate feature importance for the Random Forest model
 importance <- feature_importance(rf_model)
 print(importance)

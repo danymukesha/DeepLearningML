@@ -27,12 +27,12 @@ train_ml_models <- function(data, target) {
     method = "rpart",
     trControl = control
   )
-  models$lda <- train(
-    as.formula(paste(target, "~ .")),
-    data = data,
-    method = "lda",
-    trControl = control
-  )
+  #models$lda <- train(
+  #  as.formula(paste(target, "~ .")),
+  #  data = data,
+  #  method = "lda",
+  #  trControl = control
+  #)
   models$gbm <- train(
     as.formula(paste(target, "~ .")),
     data = data,

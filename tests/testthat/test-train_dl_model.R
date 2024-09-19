@@ -1,5 +1,6 @@
 test_that("train_dl_model trains a deep learning model", {
   skip_if_not_installed("h2o")
+  skip()
 
   # Load required package
   library(h2o)

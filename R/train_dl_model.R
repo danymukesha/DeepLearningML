@@ -22,5 +22,6 @@ train_dl_model <- function(data, target, epochs = 100,
                             l1 = l1,
                             l2 = l2,
                             input_dropout_ratio = input_dropout_ratio)
+  h2o.shutdown(prompt = FALSE)
   return(model)
 }
