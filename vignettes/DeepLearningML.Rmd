@@ -1,0 +1,114 @@
+---
+title: "DeepLearningML"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{DeepLearningML}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{R}
+library(DeepLearningML)
+```
+
+### 1. Train a Deep Learning Model
+
+You can train a deep learning model using your metabolomics dataset. 
+For example, let's create a small dataset and train a model:
+
+```{r train_dl_model}
+library(h2o)
+h2o.init()
+data <- data.frame(
+  x1 = rnorm(100),
+  x2 = rnorm(100),
+  y = sample(0:1, 100, replace = TRUE)
+)
+model <- train_dl_model(data, target = "y", epochs = 10)
+h2o.shutdown(prompt = FALSE)
+```
+
+### 2. Train Machine Learning Models
+
+The package supports multiple machine learning algorithms 
+like RF, SVM, RPART, and more using the `caret` package. 
+Here is how you can train a set of machine learning models:
+
+```{r train_ml_models, eval=FALSE, warning=FALSE}
+library(caret)
+# train machine learning models
+ml_models <- train_ml_models(data, target = "y")
+# access the trained Random Forest model
+rf_model <- ml_models$rf
+```
+
+### 3. Evaluate Models
+
+After training models, you can evaluate their performance 
+using AUC and ROC curves. Here's how to do it:
+
+```{r evaluate_models, eval=FALSE}
+results <- evaluate_models(ml_models, data, target = "y")
+print(results)
+```
+
+### 4. Feature Importance
+
+You can assess the importance of features in the trained models 
+using the `feature_importance()` function:
+
+```{r feature_importance}
+# calculate feature importance for the Random Forest model
+importance <- feature_importance(rf_model)
+print(importance)
+```
+
+## Available Functions
+
+### `train_dl_model()`
+
+- **Description**: Trains a deep learning model using the `h2o` package.
+- **Parameters**:
+  - `data`: A data frame containing input features and the target variable.
+  - `target`: The name of the target variable (output).
+  - `epochs`: The number of epochs to train the model (default: 50).
+- **Returns**: A trained H2O deep learning model.
+
+### `train_ml_models()`
+
+- **Description**: Trains a set of machine learning models using the `caret` package.
+- **Parameters**:
+  - `data`: A data frame containing input features and the target variable.
+  - `target`: The name of the target variable (output).
+- **Returns**: A list of trained models.
+
+### `evaluate_models()`
+
+- **Description**: Evaluates the performance of trained models using ROC curves and AUC.
+- **Parameters**:
+  - `models`: A list of trained models.
+  - `data`: A data frame containing test data.
+  - `target`: The name of the target variable.
+- **Returns**: A vector of AUC values for each model.
+
+### `cross_entropy()`
+
+- **Description**: Computes the cross-entropy loss between true labels and predicted labels.
+- **Parameters**:
+  - `x`: True labels.
+  - `z`: Predicted labels.
+- **Returns**: The cross-entropy loss.
+
+### `feature_importance()`
+
+- **Description**: Computes the importance of features in a trained machine learning model.
+- **Parameters**:
+  - `model`: A trained machine learning model from `caret` or `h2o`.
+- **Returns**: A data frame of feature importance scores.

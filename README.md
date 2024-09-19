@@ -1,0 +1,22 @@
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+# DeepLearningML
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+`DeepLearningML` is an R package that facilitates deep learning and
+machine learning modeling for metabolomics data analysis. The package
+provides a comprehensive set of tools to train, evaluate, and assess the
+feature importance of deep learning models and other machine learning
+algorithms.
+
+## Features
+
+- Train deep learning models using `h2o`.
+- Implement various machine learning algorithms like Random Forest (RF),
+  Support Vector Machine (SVM), Decision Trees (RPART), and others using
+  the `caret` package.
+- Perform model evaluation using ROC and AUC analysis.
+- Estimate feature importance from trained models.
